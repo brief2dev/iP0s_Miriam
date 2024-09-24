@@ -76,7 +76,8 @@ $abono = mysqli_fetch_array($queryabo);
     $queryfl = $conexion -> query($sqlfl);
     $fel = mysqli_fetch_array($queryfl);
     if (!empty($fel)) {
-        $pdf->Cell(0,3,'Fecha Limite: '.date('d-m-Y', strtotime ($fel['Fecha_Final'])),0,1,'L');
+        $fecfinal = date("d-m-Y", strtotime($fel['Fecha_Final'] . "- 3 days"));
+        $pdf->Cell(0, 3, 'Fecha Limite: ' . date('d-m-Y', strtotime($fecfinal)), 0, 1, 'L');
     }
     
 

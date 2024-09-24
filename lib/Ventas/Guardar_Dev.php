@@ -4,8 +4,12 @@ ini_set('display_errors', '1');
 session_start();
 $subtotal = $_POST['Subtotal'];
 include_once "../conexion.php"; 
+if(!isset($_POST["Subtotal"])) exit;
 
-
+if ($subtotal == 0){
+	header("Location: ./../../VDev.php?status=6"); 	
+}
+else{
 	if(isset($_POST["descueporcentaje"]) == 0 || isset($_POST["descueporcentaje"]) == 0.0){
 		$descuento_pesos = 0.0;
 		$descuento_porce = 0.0;
@@ -85,5 +89,5 @@ $fecfinal = date("Y-m-d",strtotime($fecha."+ 1 month"));
 
 
 
-
+}
 ?>

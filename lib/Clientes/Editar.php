@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 include_once "../conexion.php";
 $id = $_POST["id"];
 
@@ -9,7 +7,7 @@ $ape = $_POST["perape"];
 $telefono = $_POST["pertelefono"];
 $correo = $_POST["percorreo"];
 $direcc = $_POST["perdirecc"];
-$cp = $_POST["percre"];// monto credito
+$cp = $_POST["percre"];
 $checkp = $_POST["checkp"]; 
 if (empty($checkp)) {
 	$checkp = 0;

@@ -45,7 +45,7 @@ include_once "lib/alerts.php";
                     <thead>
                         <tr>
                             <th>Folio</th>
-                            <th># Venta</th>
+                            <th>Tipo</th>
                             <th>Cliente</th>
                             <th>Fecha Gen</th>
                             <th>Fecha Exp</th>
@@ -65,11 +65,20 @@ include_once "lib/alerts.php";
                             $fech = date("Y-m-d");
                             
                             $sql = "SELECT * FROM Cupon WHERE Usado = 0 AND Fecha_Exp >= ".$fech." ORDER BY ID_Cupon DESC";
+                            
                             $query = $conexion -> query ($sql);
+                            error_reporting(E_ALL);
+                            ini_set('display_errors', '1');
                                 while($venta = mysqli_fetch_array($query)){
                                     //echo $venta['Total'];//-----------------------------
                                     //obtiene los datos del vendedor con el id retornado de ventas
-                                    $sql1 = "SELECT * FROM Ventas WHERE ID_Venta = ".$venta['ID_Venta'];
+                                    if (empty($venta['ID_Venta'])) {
+                                        $sql1 = "SELECT * FROM M_MDetalles WHERE ID_Detalle = ".$venta['ID_MD'];
+                                        $topp = "Mutualista";
+                                    }else{
+                                        $sql1 = "SELECT * FROM Ventas WHERE ID_Venta = ".$venta['ID_Venta'];
+                                        $topp = "Venta";
+                                    }
                                     $query1 = $conexion -> query ($sql1);
                                         while($vendedor = mysqli_fetch_array($query1)){
                                             //echo $vendedor['Nombre'];//---------------------------
@@ -79,8 +88,8 @@ include_once "lib/alerts.php";
                                                 while ($sucursal = mysqli_fetch_array($query2)){
                                                             echo '<tr>';
                                                             echo '<td>'.$venta['ID_Cupon'].'</td>';
-                                                            echo '<td>'.$venta['ID_Venta'].'</td>';
-                                                            echo '<td>'.$sucursal['Nombres'].' '.$vendedor['Apellidos'].'</td>';
+                                                            echo '<td>'.$topp.'</td>';
+                                                            echo '<td>'.$sucursal['Nombres'].' '.$sucursal['Apellidos'].'</td>';
                                                             echo '<td>'.date('d/m/Y', strtotime($venta['Fecha_Gen'])).'</td>';
                                                             echo '<td>'.date('d/m/Y', strtotime($venta['Fecha_Exp'])).'</td>';
                                                             echo '<td>$'.number_format($venta['Valor'], 2).'</td>';

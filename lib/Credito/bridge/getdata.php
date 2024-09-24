@@ -57,17 +57,7 @@ $idv = mysqli_fetch_array($queryidv);
                                             echo '<td>'.date('d-m-Y', strtotime($credito['Fecha_Final'])).'</td>';
                                             echo '<td> $'.number_format($credito['Saldo_Pend'], 2).'</td>';
                                             $tota_adeudo = $tota_adeudo + $credito['Saldo_Pend'];
-                                            switch ($credito['ID_Medio']) {
-                                                case 2:
-                                                    echo '<td><span class="badge badge-soft-warning font-size-12">CREDITO</span></td>';
-                                                    break;
-                                                case 3:
-                                                        echo '<td><span class="badge badge-soft-warning font-size-12">APARTADO</span></td>';
-                                                    break;
-                                                default:
-                                                    # code...
-                                                    break;
-                                            }
+                                            echo '<td><span class="badge badge-soft-warning font-size-12">Credito</span></td>';
                                             echo '<td><div class="btn btn-primary"><a href="Nota.php?id='.$credito['ID_Venta'].'" target="_blank" style="color:#FFFFFF;><i class="mdi mdi-eye"></i>Nota </a></div></td>';
                                             echo '<td><div onClick="modal1php('.$credito['ID_Abono'].')" class="btn btn-primary"><i class=""></i>Abonar</div></td>';
                                             echo '<td><div onClick="modal2php('.$credito['ID_Venta'].')" class="btn btn-primary"><i class=""></i>Config</div></td>';

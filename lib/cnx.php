@@ -3,9 +3,9 @@ date_default_timezone_set('America/Merida');
 /* $DB = "u665967788_Berel"; 
 $user = "u665967788_Berel_Ticul";
 $pass = "sC*12Bg2"; */
-$DB = "iP0s"; 
+$DB = "ModaMiriam"; 
 $user = "root";
-$pass = "devAR93";
+$pass = "Blitzc0de";
 
 $conexion = new mysqli("localhost", $user, $pass, $DB);
 if (!$conexion) {

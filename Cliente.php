@@ -235,8 +235,8 @@ $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
                                             # code...
                                             echo '
                                                 <label for="useremail">Credito Disponible</label>
-                                                <input type="text" value="'.$usuario->Credito.'"  name="percre"
-                                                    class="form-control" id="useremail"  placeholder="00000">
+                                                <input type="text" value="'.$usuario->Credito.'" required name="percre"
+                                                    class="form-control" id="useremail" placeholder="00000">
                                             ';
                                         }
                                         ?>

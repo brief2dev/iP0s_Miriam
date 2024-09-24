@@ -1,5 +1,15 @@
 <?php
 
+/*
+ *  Author		David S. Tufts
+ * 	Developer 	Mariel Santos
+ *  Company		Blitzc0de
+ *	  
+ *  update:	03/03/2021
+ *  Usage:	<img src="/barcode.php?text=testing" alt="testing" />
+ */
+
+// For demonstration purposes, get pararameters that are passed in through $_GET or set to the default value
 $filepath = (isset($_GET["filepath"])?$_GET["filepath"]:"");
 $text = (isset($_GET["text"])?$_GET["text"]:"0");
 

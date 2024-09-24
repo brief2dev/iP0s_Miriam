@@ -86,7 +86,7 @@ if ($subtotal == 0){
 			try {
 				//$hoy = date("d-m-Y");
 				//sumo días
-				$fecfinal = date("Y-m-d",strtotime($fecha."+ 33 days")); 
+				$fecfinal = date("Y-m-d",strtotime($fecha."+ 34 days")); 
 				/// Inserta la Venta
 				$sentencia = $base_de_datos->prepare("INSERT INTO Ventas(ID_Personal, ID_Cliente, Caja, ID_Medio, Cantidad, Fecha, Hora, Descuento_efect, Descuento_porcent, Subtotal, IVA, Total, Efectivo, Cambio, ID_Destino, Comentarios, Cort, Fecha_Fin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?);");
 				$sentencia->execute([$vendedor, $comprador, $caja, $tipo, $cantidad, $fecha, $hora, $descuento_pesos, $descuento_porce, $subtotal, $iva, $total, $efectivo, $cambio, $destino, $comentario, $cort, $fecfinal]);

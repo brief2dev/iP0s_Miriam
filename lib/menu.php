@@ -57,6 +57,19 @@ switch ($_SESSION['cargo']) {
                                 </ul>
                             </li>
                             <!-------------------------------------------------------------------->
+                            <!-------------------------------------------------------------------->
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i> <span class="mdi mdi-professional-hexagon"></span></i>
+                                    <span>Mutualista</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="NMT.php"><i class=" mdi mdi-calendar-plus"></i>Crear</a></li>
+                                    <li><a href="MT.php"><i class=" mdi mdi-calendar-range"></i>Activos</a></li>
+                                    <li><a href="FMT.php"><i class=" mdi mdi-calendar-check"></i>Finalizados</a></li>
+                                </ul>
+                            </li>
+                            <!-------------------------------------------------------------------->
                             <br>
                             <br>
                             <!--Titulo-->
@@ -166,7 +179,17 @@ switch ($_SESSION['cargo']) {
             </ul>
         </li>
         <!-------------------------------------------------------------------->
-      
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i> <span class="mdi mdi-professional-hexagon"></span></i>
+                <span>Mutualista</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="NMT.php"><i class=" mdi mdi-calendar-plus"></i>Crear</a></li>
+                <li><a href="MT.php"><i class=" mdi mdi-calendar-check"></i>Activos</a></li>
+                <li><a href="FMT.php"><i class=" mdi mdi-calendar-clock"></i>Historial</a></li>
+            </ul>
+        </li>
         <!-------------------------------------------------------------------->
         <br>
         <br>

@@ -214,7 +214,7 @@ const NombreMeses = [
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title mb-4">Movimientos Financieros</h4>
+                <h4 class="card-title mb-5">Movimientos Financieros</h4>
                 <ul class="list-unstyled activity-wid">
                     <!-------------------------------------------------------------------->
                     <?php
@@ -287,28 +287,6 @@ const NombreMeses = [
                                 </div>
                             </div>
                             ';
-                        }
-                        ?>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-------------------------------Clientes Credito------------------------------------->
-    <div class="col-lg-12">
-        <!--Widgets 1 -->
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">Clientes proximos a vencer</h4>
-                <div class="text-center">
-                    <div class="row">
-                        <?php
-                        $sqlC = "SELECT * FROM Abonos WHERE fecha";
-                        $queryC = $conexion -> query ($sqlC);
-                        while($listC = mysqli_fetch_array($queryC)){
-                            echo'
-                            ';
-                           
                         }
                         ?>
 
