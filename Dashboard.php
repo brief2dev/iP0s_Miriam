@@ -7,7 +7,7 @@ if ($_SESSION['loggedin'] != true){
     header('Location: index.php');//Aqui lo redireccionas al lugar que quieras.
     echo $_SESSION['loggedin'];
 }else{
-    $page = Dashboard; 
+    $page = "Dashboard"; 
     include_once "lib/Header.php" ; 
 }
 include_once "lib/conexion.php";

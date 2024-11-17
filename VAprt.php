@@ -55,13 +55,6 @@ include_once "lib/alerts.php";
                     </thead>
                     <tbody>
                         <?php 
-                            //BUSCA EL ABONO MAS RECIENTE
-                            //$sql = "SELECT MAX(ID_Abono) as ida, ID_Venta, Fecha, Abono, Saldo_Pend FROM Abonos WHERE Estatus = 0 GROUP BY ID_Venta ORDER BY ID_Venta DESC";
-                            /* SELECT DISTINCT ID_Cliente, ID_Venta, Fecha, (SELECT SUM(Total FROM Ventas WHERE ID_Cliente = 7) FROM Ventas WHERE ID_Destino = 2 AND ID_Cliente = 7 GROUP BY ID_Cliente 
-                            SELECT SUM(Total) as t FROM Ventas WHERE ID_Destino = 2 AND ID_Cliente = 7
-                            SELECT Saldo_Pend FROM Abonos WHERE ID_Venta = 110 AND ID_Cliente = 1 ORDER BY ID_Abono DESC LIMIT 1 */
-                            //$sql = "SELECT MAX(ID_Deuda) as ida, ID_Cliente, Abono, Pendiente, Fecha FROM Deudas GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
-                            //$sql = "SELECT * FROM Deudas WHERE estatus = 0 AND ID_Deuda IN (SELECT MAX(ID_Deuda) FROM Deudas GROUP BY ID_Cliente ORDER BY ID_Cliente DESC) GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
                             $sqlcli = "SELECT MAX(ID_Cliente) as cliente FROM Abonos WHERE Estatus = 0 AND ID_Medio = 3 GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
                             $querycli = $conexion -> query ($sqlcli);
                                 while($cliente = mysqli_fetch_array($querycli)){

@@ -3,9 +3,14 @@ date_default_timezone_set('America/Merida');
 /* $DB = "u665967788_Berel"; 
 $user = "u665967788_Berel_Ticul";
 $pass = "sC*12Bg2"; */
-$DB = "ModaMiriam"; 
+/* $DB = "ModaMiriam"; 
 $user = "root";
-$pass = "Blitzc0de";
+$pass = "Blitzc0de"; */
+
+
+$DB = "iP0s_Miriam"; 
+$user = "root";
+$pass = "Server*90";
 try{
 	$base_de_datos = new PDO('mysql:host=localhost;dbname=' . $DB, $user, $pass);
 	$base_de_datos->query("set names utf8;");

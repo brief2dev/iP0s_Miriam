@@ -36,7 +36,6 @@ if ($cantorg == 1) {
 					exit;
 				}
 			}
-			
 		}
 	}
 }

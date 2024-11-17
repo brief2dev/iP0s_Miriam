@@ -50,7 +50,7 @@ $ida = mysqli_fetch_array($queryida);
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="name">Abono</label>
-                    <input type="text" class="form-control" value="" name="ab" placeholder="">
+                    <input type="text" class="form-control" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 46' name="ab" placeholder="">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -108,7 +108,7 @@ $ida = mysqli_fetch_array($queryida);
                                         while($venta = mysqli_fetch_array($query2)){
                                             echo '<tr>';
                                             echo '<td>'.$venta['ID_Deuda'].'</td>';
-                                            echo '<td>'.date('d-m-Y g:i a', strtotime($venta['Fecha'])).'</td>';
+                                            echo '<td>'.date('d/m/Y g:i a', strtotime($venta['Fecha'])).'</td>';
                                             echo '<td> $'.number_format($venta['Abono'], 2) .'</td>';
                                                 $sqlvc = "SELECT * FROM Medio_Pago WHERE ID_Medio = ".$venta['ID_Medio'];
                                                 $queryvc = $conexion -> query($sqlvc);

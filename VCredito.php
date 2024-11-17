@@ -43,7 +43,7 @@ include_once "lib/alerts.php";
                     etc. O bien usar el cuadro de busqueda para filtrar los datos
                 </p>
 
-                <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                <table id="datatable-buttonss" class="table table-bordered dt-responsive nowrap"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -56,13 +56,7 @@ include_once "lib/alerts.php";
                     <tbody>
                         <?php 
                             //BUSCA EL ABONO MAS RECIENTE
-                            //$sql = "SELECT MAX(ID_Abono) as ida, ID_Venta, Fecha, Abono, Saldo_Pend FROM Abonos WHERE Estatus = 0 GROUP BY ID_Venta ORDER BY ID_Venta DESC";
-                            /* SELECT DISTINCT ID_Cliente, ID_Venta, Fecha, (SELECT SUM(Total FROM Ventas WHERE ID_Cliente = 7) FROM Ventas WHERE ID_Destino = 2 AND ID_Cliente = 7 GROUP BY ID_Cliente 
-                            SELECT SUM(Total) as t FROM Ventas WHERE ID_Destino = 2 AND ID_Cliente = 7
-                            SELECT Saldo_Pend FROM Abonos WHERE ID_Venta = 110 AND ID_Cliente = 1 ORDER BY ID_Abono DESC LIMIT 1 */
-                            //$sql = "SELECT MAX(ID_Deuda) as ida, ID_Cliente, Abono, Pendiente, Fecha FROM Deudas GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
-                            //$sql = "SELECT * FROM Deudas WHERE estatus = 0 AND ID_Deuda IN (SELECT MAX(ID_Deuda) FROM Deudas GROUP BY ID_Cliente ORDER BY ID_Cliente DESC) GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
-                            $sqlcli = "SELECT MAX(ID_Cliente) as cliente FROM Abonos WHERE Estatus = 0 AND ID_Medio = 2 GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
+                            $sqlcli = "SELECT MAX(ID_Cliente) as cliente FROM Abonos WHERE Estatus = 0 AND ID_Medio = 2 and ID_Cliente != 5 GROUP BY ID_Cliente ORDER BY ID_Cliente DESC";
                             $querycli = $conexion -> query ($sqlcli);
                                 while($cliente = mysqli_fetch_array($querycli)){
                                             //obtiene nombre con el id del cliente retornado de los datos
@@ -140,4 +134,28 @@ function modalphp(modal) {
     });
 
 }
+</script>
+
+<script>
+$(document).ready(function() {
+    // Verifica si la tabla ya ha sido inicializada
+    if (!$.fn.DataTable.isDataTable('#datatable-buttonss')) {
+        $('#datatable-buttonss').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            // Deshabilitar la ordenación en la primera columna (ID)
+            columnDefs: [{
+                orderable: false,
+                targets: 0
+            }],
+            // Ordenar por la segunda columna (Dirección) y luego por la tercera (Número)
+            order: [
+                [1, 'asc'], // Ordena por Dirección (columna 2)
+                [2, 'asc'] // Ordena por Número (columna 3)
+            ]
+        });
+    }
+});
 </script>

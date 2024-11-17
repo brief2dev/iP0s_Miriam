@@ -17,7 +17,7 @@
                                     <script>
                                         document.write(new Date().getFullYear()) 
                                     </script>
-                                    (v1.6.7)
+                                    (v1.7.1)
                                 </div>
                             </div>
                         </div>
@@ -124,6 +124,7 @@
     <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js"></script>
 
     <script src="assets/js/pages/dashboard.init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <script src="assets/js/app.js"></script>
 

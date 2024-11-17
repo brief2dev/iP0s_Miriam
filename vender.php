@@ -168,20 +168,13 @@ $cupval = $_GET['st'];
 
                 <h5>Articulos: <?php echo $articulos; ?></h5>
                 <h4>SubTotal: $ <?php echo $granTotal = $granTotal - $cupval;  ?></h4>
-
-
+                <br><br>
                 <form action="./lib/Ventas/Guardar.php" id="venta" name="venta" method="POST">
-                    <!-- <form action="test.php" method="POST"> -->
-
+                    <input type="hidden" name="articulos" value=<?php echo $articulos; ?> />
                     <div data-repeater-list="group-a">
                         <div data-repeater-item class="row">
-                            <div class="form-group col-lg-2">
-                                <label for="name">Caja</label>
-                                <input type="text" id="lname" class="form-control" name="caja"
-                                    value="<?php echo $_SESSION['username']; ?>" disabled>
-                                <input type="hidden" name="articulos" value=<?php echo $articulos; ?> />
-                            </div>
-                            <div class="form-group col-lg-2">
+                            
+                            <div class="form-group col-lg-3">
                                 <label for="email">Cliente</label>
                                 <select id="SLCliente" class="form-control" onchange="if (this.selectedIndex) getpremium();" name="cliente" required>
                                     <option value="5" selected>VENTA GENERAL</option>
@@ -331,19 +324,21 @@ $cupval = $_GET['st'];
                                     placeholder="0.0" readonly>
                             </div>
                             <?php
-                                
-                                $sqlcredi = "SELECT * FROM Clientes WHERE ID_Cliente = ".$idcl;
-                                $querycred = $conexion -> query($sqlcredi);
-                                $idpremi = mysqli_fetch_array($querycred);
-                                if ($idpremi['Premium'] == '1') {
-                                    echo '
-                                    <div class="form-group col-lg-2">
-                                        <label for="name">Credito Disponible</label>
-                                        <input style="background:#ffc125" type="text" id="Credito" class="form-control" name="fcredito" value="'.$idpremi['Credito'].'"
-                                            placeholder="0.0" readonly>
-                                    </div>
-                                ';
+                                if (!empty($idcl)) {
+                                     $sqlcredi = "SELECT * FROM Clientes WHERE ID_Cliente = ".$idcl;
+                                    $querycred = $conexion -> query($sqlcredi);
+                                    $idpremi = mysqli_fetch_array($querycred);
+                                    if ($idpremi['Premium'] == '1') {
+                                        echo '
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Disponible</label>
+                                            <input style="background:#ffc125" type="text" id="Credito" class="form-control" name="fcredito" value="'.$idpremi['Credito'].'"
+                                                placeholder="0.0" readonly>
+                                        </div>
+                                    ';
+                                    }
                                 }
+                               
                                 
                              ?>
                             
@@ -374,12 +369,18 @@ $cupval = $_GET['st'];
 <?php include_once "lib/Footer.php" ?>
 
 <script>
+
+    jQuery(document).ready(function($){
+    $(document).ready(function() {
+        $('#SLCliente').select2();
+    });
+});
+
+
     function getpremium(){
         var idpre = $('#SLCliente').val();
-        var idcup = $('#idcup').val();
-        var cupval = $('#cupval').val();
-
-        location.href = "vender.php?status=28&st="+cupval+"&idb="+idcup+"&ipr=" + idpre;
+        /* var idcup = $('#idcup').val();
+        var cupval = $('#cupval').val(); */
+        location.href = "vender.php?ipr=" + idpre;
     }
-
 </script>

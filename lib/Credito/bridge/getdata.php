@@ -53,8 +53,8 @@ $idv = mysqli_fetch_array($queryidv);
                                         while($credito = mysqli_fetch_array($query2)){
                                             echo '<tr>';
                                             echo '<td>'.$credito['ID_Venta'].'</td>';
-                                            echo '<td>'.date('d-m-Y g:i a', strtotime($credito['Fecha'])).'</td>';
-                                            echo '<td>'.date('d-m-Y', strtotime($credito['Fecha_Final'])).'</td>';
+                                            echo '<td>'.date('d/m/Y g:i a', strtotime($credito['Fecha'])).'</td>';
+                                            echo '<td>'.date('d/m/Y', strtotime($credito['Fecha_Final'])).'</td>';
                                             echo '<td> $'.number_format($credito['Saldo_Pend'], 2).'</td>';
                                             $tota_adeudo = $tota_adeudo + $credito['Saldo_Pend'];
                                             echo '<td><span class="badge badge-soft-warning font-size-12">Credito</span></td>';

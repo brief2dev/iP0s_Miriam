@@ -133,7 +133,7 @@ include_once "lib/alerts.php";
                                                             <td>'.$lectura['Existencia'].'</td>
                                                             <td>'.$lectura['Nombre'].'</td>
                                                             <td>'.$catt['Nombre'].'</td>
-                                                            <td>'.date('d-m-Y g:i a', strtotime($lectura['Fecha_Ingreso'])).'</td>
+                                                            <td>'.date('d/m/Y g:i a', strtotime($lectura['Fecha_Ingreso'])).'</td>
                                                             <td></td>
                                                         </tr>
                                                     ';

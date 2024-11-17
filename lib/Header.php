@@ -10,11 +10,9 @@ include_once "lib/cnx.php";
     <meta charset="utf-8" />
     <title>Miriam | <?php echo $page ?> </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Blitzc0de" name="iP0s v1.4" />
+    <meta content="Blitzc0de" name="iP0s v1.6" />
     <meta content="SYS" name="Blitzc0de" />
     <meta name="theme-color" content="#e55a48">
-    
-    <!-- Sumador  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
     <!-- Sweet Alert- -->
@@ -40,6 +38,7 @@ include_once "lib/cnx.php";
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
 
 </head>
 

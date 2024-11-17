@@ -13,7 +13,11 @@ $idabono = $_GET['iventa'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>payout</title>
 </head>
-
+<?php 
+$sAbb = "SELECT ID_Abono, ID_Venta, ID_Medio FROM Abonos WHERE ID_Venta = ".$idabono;
+$qAbb = $conexion -> query($sAbb);
+$abb = mysqli_fetch_array($qAbb);
+?>
 <body>
     <form method="get" action="lib/Credito/Liquidar.php">
         <div class="row">
@@ -46,14 +50,14 @@ $idabono = $_GET['iventa'];
                                     }else{
                                         while($venta = mysqli_fetch_array($query2)){
                                             echo '<tr>';
-                                            echo '<td>'.$venta['Codigo'].'</td>';
+                                            echo '<td>'.$venta['Codigo'].'</td>'; 
                                             echo '<td>'.$venta['Nombre'].'</td>';
                                             echo '<td>'.$ida['Cantidad'].'</td>';
-                                            /* echo '<td> $'.number_format($venta['Abono'], 2) .'</td>';
-                                                $sqlvc = "SELECT * FROM Medio_Pago WHERE ID_Medio = ".$venta['ID_Medio'];
-                                                $queryvc = $conexion -> query($sqlvc);
-                                                $destino = mysqli_fetch_array($queryvc); */
-                                            echo '<td><a href="lib/Credito/cancelarprodc.php?us='.$user.'&cantorg='.$ida['Cantidad'].'&idv='.$idabono.'&idp='.$ida['ID_Producto'].'" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i> Eliminar</a></td>';
+                                            if ($abb === 2) {
+                                                echo '<td><a href="lib/Credito/cancelaCredito.php?idv='.$idabono.'&idp='.$ida['ID_Producto'].'" class="btn btn-danger btn-sm"><i class="mdi mdi-delete"></i>Eliminar Credito</a></td>';
+                                            } else {
+                                                echo '<td><a href="lib/Credito/cancelarprodc.php?us='.$user.'&cantorg='.$ida['Cantidad'].'&idv='.$idabono.'&idp='.$ida['ID_Producto'].'" class="btn btn-warning btn-sm"><i class="mdi mdi-delete"></i>Quitar producto</a></td>';
+                                            }
                                             echo '</tr>';
                                         } 
                                     }     
