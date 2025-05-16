@@ -17,7 +17,7 @@
                                     <script>
                                         document.write(new Date().getFullYear()) 
                                     </script>
-                                    (v1.7.1)
+                                    (v1.7.5)
                                 </div>
                             </div>
                         </div>
