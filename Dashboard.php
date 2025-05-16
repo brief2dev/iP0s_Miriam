@@ -339,7 +339,7 @@ const NombreMeses = [
                                                             echo '<td>'.$venta['ID_Venta'].'</td>';
                                                             echo '<td>'.$sucursal['Nombre'].'</td>';
                                                             echo '<td>'.$vendedor['Nombre'].' '.$vendedor['Apellido'].'</td>';
-                                                            echo '<td>'.$venta['Fecha'].' '.$venta['Hora'].'</td>';
+                                                            echo '<td>'.date('d/m/Y', strtotime($venta['Fecha'])).' '.$venta['Hora'].'</td>';
                                                             echo '<td>'.$venta['Comentarios'].'</td>';
                                                             echo '<td> <a href="Nota.php?id='.$venta['ID_Venta'].'"'.'target="_blank">'.'$ ' .$venta['Total'].'</a> </td>';
                                                             echo '</tr>';
