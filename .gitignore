@@ -1,2 +1,4 @@
 # Ignora archivos del sistema Mac 
 .DS_store
+lib/cnx.php
+lib/conexion.php
