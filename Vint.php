@@ -64,7 +64,7 @@ include_once "lib/alerts.php";
                     <tbody>
                         <?php 
                             //obtiene los datos de la venta
-                            $sql = "SELECT * FROM Ventas WHERE ID_Destino = 1 OR ID_Destino = 4 ORDER BY ID_Venta DESC";
+                            $sql = "SELECT ID_Venta, ID_Personal, Fecha, ID_Medio, ID_Destino, ID_Personal, Comentarios, Total FROM Ventas WHERE ID_Destino = 1 OR ID_Destino = 4 ORDER BY ID_Venta DESC";
                             $query = $conexion -> query ($sql);
                                 while($venta = mysqli_fetch_array($query)){
                                     //echo $venta['Total'];//-----------------------------
@@ -87,7 +87,7 @@ include_once "lib/alerts.php";
                                                             echo '<td>'.$venta['ID_Venta'].'</td>';
                                                             echo '<td>'.$sucursal['Destino'].'</td>';
                                                             echo '<td>'.$vendedor['Nombre'].' '.$vendedor['Apellido'].'</td>';
-                                                            echo '<td>'.date('d-mY', strtotime($venta['Fecha'])).' - '.date('g:i a', strtotime($venta['Hora'])).'</td>';
+                                                            echo '<td>'.date('d/m/Y', strtotime($venta['Fecha'])).' - '.date('g:i a', strtotime($venta['Hora'])).'</td>';
                                                             echo '<td>'.$venta['Comentarios'].'</td>';
                                                             echo '<td> <a href="Nota.php?id='.$venta['ID_Venta'].'"'.'target="_blank">'.'$ ' .$venta['Total'].'</a> </td>';
                                                                 if($_SESSION['cargo'] == 2){

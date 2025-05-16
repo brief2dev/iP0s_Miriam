@@ -284,7 +284,7 @@ $totalcorte = 0;
                                                                 echo '<td>'.$tipo['Motivo'].'</td>';//
                                                                 echo '<td>'.'$ '.number_format($caja['Saldo'], 2).'</td>';
                                                                 echo '<td>'.$caja['Descripcion'].'</td>';
-                                                                echo '<td>'.date('d-m-Y g:i a', strtotime($caja['Fecha'])).'</td>';
+                                                                echo '<td>'.date('d/m/Y g:i a', strtotime($caja['Fecha'])).'</td>';
                                                                 echo '<td>'.$user['Nombre'].'</td>';//usuario
                                                                 echo '</tr>';  
                                                             }//END USER

@@ -7,9 +7,9 @@ $pass = "sC*12Bg2"; */
 $user = "root";
 $pass = "Blitzc0de"; */
 
-$DB = "iP0s_Miriam"; 
+$DB = "Miriam"; 
 $user = "root";
-$pass = "Server*90";
+$pass = "Blitzc0de";
 
 $conexion = new mysqli("localhost", $user, $pass, $DB);
 if (!$conexion) {

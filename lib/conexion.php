@@ -8,9 +8,9 @@ $user = "root";
 $pass = "Blitzc0de"; */
 
 
-$DB = "iP0s_Miriam"; 
+$DB = "Miriam"; 
 $user = "root";
-$pass = "Server*90";
+$pass = "Blitzc0de";
 try{
 	$base_de_datos = new PDO('mysql:host=localhost;dbname=' . $DB, $user, $pass);
 	$base_de_datos->query("set names utf8;");

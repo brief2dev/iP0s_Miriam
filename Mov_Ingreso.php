@@ -81,9 +81,6 @@ include_once "lib/alerts.php";
                             </div>
                         </div>
                     </fieldset>
-                    <!-- <p><h3>Saldo: $2790.50</h3>     <h3>Contra: $ -2310.50</h3></p>
-                                     -->
-
                 </form>
 
             </div>
@@ -138,7 +135,7 @@ include_once "lib/alerts.php";
                                                                     $medio = mysqli_fetch_array($querym);
                                                                 echo '<td>'.$medio['Tipo'].'</td>';
                                                                 echo '<td>'.$caja['Descripcion'].'</td>';
-                                                                echo '<td>'.date('d-m-Y g:i a', strtotime($caja['Fecha'])).'</td>';
+                                                                echo '<td>'.date('d/m/Y g:i a', strtotime($caja['Fecha'])).'</td>';
                                                                 echo '<td>'.$user['Nombre'].'</td>';//usuario
                                                                 echo '</tr>';  
                                                                 $totalcorte = $totalcorte + doubleval ($caja['Monto']);

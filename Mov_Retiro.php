@@ -118,7 +118,7 @@ include_once "lib/alerts.php";
                                                                 echo '<td>'.$tipo['Motivo'].'</td>';//
                                                                 echo '<td>'.'$ ' .$caja['Monto'].'</td>';
                                                                 echo '<td>'.$caja['Descripcion'].'</td>';
-                                                                echo '<td>'.date('d-m-Y g:i a', strtotime($caja['Fecha'])).'</td>';
+                                                                echo '<td>'.date('d/m/Y g:i a', strtotime($caja['Fecha'])).'</td>';
                                                                 echo '<td>'.$user['Nombre'].'</td>';//usuario
                                                                 echo '</tr>';  
                                                                 $totalcorte = $totalcorte + doubleval ($caja['Monto']);
@@ -138,10 +138,5 @@ include_once "lib/alerts.php";
     <!--END Default Table-->
 </div>
 <!-- end row -->
-
-
-
-
-
 
 <?php include_once "lib/Footer.php" ?>
