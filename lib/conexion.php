@@ -8,9 +8,9 @@ $user = "root";
 $pass = "Blitzc0de"; */
 
 
-$DB = "Miriam"; 
+$DB = "izeek_Miriam"; 
 $user = "root";
-$pass = "Blitzc0de";
+$pass = "Server*90";
 try{
 	$base_de_datos = new PDO('mysql:host=localhost;dbname=' . $DB, $user, $pass);
 	$base_de_datos->query("set names utf8;");
@@ -20,9 +20,3 @@ try{
 }catch(Exception $e){
 	echo "Ocurrió algo con la base de datos: " . $e->getMessage();
 }
-if(!$base_de_datos){
-    echo 'Error';
-}else{
-    //echo 'Conectado';
-}
-?>

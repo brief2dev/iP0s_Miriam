@@ -228,7 +228,6 @@ $totalcorte = 0;
                     
                     <div class="col-12">
                         <form action="./lib/Caja/Corte.php" id="venta" method="POST">
-                        <br>
                         <center>
                             <input name="abono" type="hidden" value="<?php echo $rows2['totalingre'];?>"> <!-- Ingresos en Efectivo -->
                             <input name="efectivo" type="hidden" value="<?php echo $rows4['efectivo'];?>"> <!-- Ventas en Efectivo -->

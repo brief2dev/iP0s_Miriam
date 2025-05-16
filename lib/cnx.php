@@ -7,15 +7,10 @@ $pass = "sC*12Bg2"; */
 $user = "root";
 $pass = "Blitzc0de"; */
 
-$DB = "Miriam"; 
+$DB = "izeek_Miriam"; 
 $user = "root";
-$pass = "Blitzc0de";
+$pass = "Server*90";
 
 $conexion = new mysqli("localhost", $user, $pass, $DB);
-if (!$conexion) {
-    echo 'Error';
-} else{
-    //echo 'Conectado';
-} 
 $conexion->set_charset("utf8");
 ?>

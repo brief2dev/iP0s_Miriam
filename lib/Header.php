@@ -13,11 +13,12 @@ include_once "lib/cnx.php";
     <meta content="Blitzc0de" name="iP0s v1.6" />
     <meta content="SYS" name="Blitzc0de" />
     <meta name="theme-color" content="#e55a48">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="assets/js/offline/jquery310.min.js"></script>
 
     <!-- Sweet Alert- -->
     <!--<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
-    <script src="assets\js\offline\swws.js"></script>
+    <script src="assets/js/offline/swws.js"></script>
 
     <!--<script src="assets/js/offline/jquery.min.js"></script>-->
     <script src="assets/js/offline/sweetalert.min.js"></script>

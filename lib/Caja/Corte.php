@@ -8,11 +8,11 @@ include_once "../cnx.php";
     $hora = date("H:i:s");
     $descr = 'Retito y corte de caja ';
     $dia= date("Y-m-d H:i:s");
-    $monto = $_POST['totalcorte'] ?? 0.0;
-    $efectivo = $_POST['efectivo'] ?? 0.0;
-    $tarjeta = $_POST['tarjeta'] ?? 0.0;
-    $abono = $_POST['abono'] ?? 0.0;
-    $gastos = $_POST['gastos'] ?? 0.0;
+    $monto   = floatval($_POST['totalcorte'] ?? 0.0);
+    $efectivo = floatval($_POST['efectivo'] ?? 0.0);
+    $tarjeta  = floatval($_POST['tarjeta'] ?? 0.0);
+    $abono    = floatval($_POST['abono'] ?? 0.0);
+    $gastos   = floatval($_POST['gastos'] ?? 0.0);
     if(empty($abono)){
         $abono = 0;
     }if(empty($tarjeta)){

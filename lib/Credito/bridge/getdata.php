@@ -142,7 +142,6 @@ $idv = mysqli_fetch_array($queryidv);
 </body>
 
 </html>
-
 <script>
 function modal1php(modal1) {
 

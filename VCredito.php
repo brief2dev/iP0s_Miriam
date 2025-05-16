@@ -110,7 +110,6 @@ include_once "lib/alerts.php";
             </div>
         </div>
     </div>
-    <!-- end col -->
     <!--END Default Table-->
 </div>
 
