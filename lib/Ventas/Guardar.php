@@ -39,6 +39,13 @@ if ($subtotal == 0){
 	$cort = 0;
 	$iva = (($total*16)/100);
 
+	if (!isset($_POST['venta_token']) || $_POST['venta_token'] !== $_SESSION['venta_token']) {
+		header("Location: ./../../vender.php?status=duplicado");
+		exit;
+	}
+	// Eliminar token para que no se reutilice
+	unset($_SESSION['venta_token']);
+
 	switch ($destino) {
 		case 1:
 			# code...VENTA

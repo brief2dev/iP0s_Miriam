@@ -15,15 +15,14 @@ if ($_FILES['fotop']['name'] != null) {
 }
 
 
-
 $codigo = $_POST["codigop"];
 $nombre = $_POST["nombrep"];
 $sucu = $_POST["sucursal"];
 $cat = $_POST["categoria"];
 $descr = $_POST["descrip"];
 $marca = $_POST["marcap"];
-$preciov = $_POST["preciovp"];
-$precioc = $_POST["presiocp"];
+$preciov = floatval($_POST["preciovp"] ?? 0.0);
+$precioc = floatval($_POST["presiocp"] ?? 0.0);
 $stock = $_POST["stockp"];
 $provedor = $_POST["provedor"];
 $fecha= date("Y-m-d H:i:s");
