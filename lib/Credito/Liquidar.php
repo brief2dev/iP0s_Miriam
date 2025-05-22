@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 
 session_start();
 include_once "../conexion.php";
@@ -14,7 +12,12 @@ $medio = $_GET["md"];                 //1 EFECTIVO 2 TARJETA
 $saldo = $_GET['saldototal'];       //saldo pendiente
 $abonoo = $_GET["ab"];               // el monto a abonar
 
+/* if (!isset($_POST['venta_token']) || $_POST['venta_token'] !== $_SESSION['venta_token']) {
+    header("Location: ./../../vender.php?status=duplicado");
+    exit;
+}
 
+unset($_SESSION['venta_token']); */
 
 //LIQUIDA TODO
 if($id == 2890){
