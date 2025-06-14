@@ -13,6 +13,6 @@ $sentencia = $base_de_datos->prepare("DELETE FROM M_Mutualista WHERE ID_Mutualis
 $resultado = $sentencia->execute([$idd]);
 
 if ($resultado === TRUE) {
-    header("Location: ./../../MTH.php?code=1");
+    header("Location: ./../../FMT.php?code=1");
     exit;
 }

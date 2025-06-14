@@ -43,7 +43,6 @@ if ($subtotal == 0){
 		header("Location: ./../../vender.php?status=duplicado");
 		exit;
 	}
-	// Eliminar token para que no se reutilice
 	unset($_SESSION['venta_token']);
 
 	switch ($destino) {

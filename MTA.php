@@ -48,7 +48,8 @@ include_once "lib/alerts.php";
                         $smm = "SELECT * FROM M_Mutualista WHERE ID_Mutualista = ".$idm;
                         $qsmm = $conexion -> query($smm);
                         $mm = mysqli_fetch_array($qsmm);
-
+                        error_reporting(E_ALL);
+                        ini_set('display_errors', '1');
                         $sqlca = "SELECT * FROM M_MDetalles WHERE ID_Mutualista = ".$idm;
                         $queryca = $conexion -> query($sqlca);
                         while ($catt = mysqli_fetch_array($queryca)) {
@@ -70,7 +71,8 @@ include_once "lib/alerts.php";
 
                                                     $r_t_dias = round(($t_dias / 7), 0, PHP_ROUND_HALF_UP);
 
-                                                    $ps = $catt['Cantidad']/$r_t_dias;
+                                                    $retVal = ($r_t_dias == 0 ) ? 1 : $r_t_dias ;
+                                                    $ps = $catt['Cantidad']/$retVal;
                                                     echo "<td>Semanal ($".number_format($ps, 2).$r_t_dias.")</td>";
                                                     break;
                                                 case '14':
@@ -81,7 +83,8 @@ include_once "lib/alerts.php";
 
                                                     $r_t_dias = round(($t_dias / 14), 0, PHP_ROUND_HALF_UP);
 
-                                                    $ps = $catt['Cantidad']/$r_t_dias;
+                                                    $retVal = ($r_t_dias == 0 ) ? 1 : $r_t_dias ;
+                                                    $ps = $catt['Cantidad']/$retVal;
                                                     echo "<td>Catorsenal ($".number_format($ps, 2).")</td>";
                                                     break;
                                                 case '30':
@@ -92,7 +95,8 @@ include_once "lib/alerts.php";
 
                                                     $r_t_dias = round(($t_dias / 30), 0, PHP_ROUND_HALF_UP);
 
-                                                    $ps = $catt['Cantidad']/$r_t_dias;
+                                                    $retVal = ($r_t_dias == 0 ) ? 1 : $r_t_dias ;
+                                                    $ps = $catt['Cantidad']/$retVal;
                                                     echo "<td>Mensual ($".number_format($ps, 2).")</td>";
                                                     break;
                                                 
@@ -105,10 +109,11 @@ include_once "lib/alerts.php";
                                             
                                             $qsab = $conexion -> query($sab);
                                             $abonado = mysqli_fetch_array($qsab);
+                                            $abonado['tot'] = ($abonado['tot'] == null) ? 0 : $abonado['tot'];
                                             echo '
                                             <td>$'.$abonado['tot'].' / $'.$catt['Cantidad'].'</td>
                                             <td>
-                                                <div onClick="modalphp('.$catt['ID_Detalle'].')" class="btn btn-primary"><i class="fas fa-money"></i></div>';
+                                                <div onClick="modalphp('.$catt['ID_Detalle'].')" class="btn btn-primary"><i class="fas fa-credit-card"></i></div>';
                                                 if ($catt['Entregado'] == 0) {
                                                     # code...
                                                     echo  ' <a class="btn btn-success" href="lib/Mutualista/cupon.php?idd='.$catt['ID_Detalle'].'"><i class="fa fa-gift"></i></a>';
