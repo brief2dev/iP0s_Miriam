@@ -48,8 +48,7 @@ include_once "lib/alerts.php";
                         $smm = "SELECT * FROM M_Mutualista WHERE ID_Mutualista = ".$idm;
                         $qsmm = $conexion -> query($smm);
                         $mm = mysqli_fetch_array($qsmm);
-                        error_reporting(E_ALL);
-                        ini_set('display_errors', '1');
+                        
                         $sqlca = "SELECT * FROM M_MDetalles WHERE ID_Mutualista = ".$idm;
                         $queryca = $conexion -> query($sqlca);
                         while ($catt = mysqli_fetch_array($queryca)) {
