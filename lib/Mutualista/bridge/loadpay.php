@@ -2,7 +2,7 @@
 include_once "../../cnx.php";
 $id = $_GET['idd'];
 //datos del Credito
-$sqlida = "SELECT * FROM Abonos WHERE ID_Abono = ".$idabono;
+$sqlida = "SELECT * FROM Abonos WHERE ID_Abono = ".$id;
 $queryida = $conexion -> query ($sqlida);
 $ida = mysqli_fetch_array($queryida);
 
@@ -53,7 +53,7 @@ $m = mysqli_fetch_array($qm);
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="name">Abono</label>
-                    <input type="text" class="form-control" value="" name="ab" placeholder="">
+                    <input type="text" class="form-control" value="" name="ab" placeholder="" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 46'>
                 </div>
             </div>
             <div class="col-lg-4">

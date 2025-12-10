@@ -349,6 +349,8 @@ $cupval = $_GET['st'];
 
                     <br>
                     <center>
+                    <?php $_SESSION['venta_token'] = bin2hex(random_bytes(16)); ?>
+                    <input type="hidden" name="venta_token" value="<?php echo $_SESSION['venta_token']; ?>">
                         <input type="hidden" id="idcup" name="idcupon" value="<?php echo $idcup;?>">
                         <input type="hidden" id="cupval" value="<?php echo $cupval;?>">
                         <button type="submit" class="btn btn-success mt-3 mt-lg-0">Terminar venta</button>
@@ -358,7 +360,13 @@ $cupval = $_GET['st'];
                     </center>
                    
                 </form>
-
+                <script>
+document.getElementById("venta").addEventListener("submit", function(e) {
+    const btn = this.querySelector("button[type=submit]");
+    btn.disabled = true;
+    btn.innerText = "Procesando...";
+});
+</script>
                 <!------------------------------------------------------------>
             </div>
         </div>

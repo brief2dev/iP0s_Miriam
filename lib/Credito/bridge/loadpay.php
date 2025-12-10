@@ -18,7 +18,7 @@ $ida = mysqli_fetch_array($queryida);
 </head>
 
 <body>
-    <form method="get" action="lib/Credito/Liquidar.php">
+    <form method="get" action="lib/Credito/Liquidar.php" id="vcred">
         <div class="row">
             <div class="col-lg-5">
                 <div class="form-group">
@@ -30,7 +30,7 @@ $ida = mysqli_fetch_array($queryida);
                     echo '<input type="text" readonly style="text-transform: uppercase;" class="form-control"
                     value="'.$cliente['Nombres'].' '.$cliente['Apellidos'].'" name="cliente" >'
                 ?>
-                    <input type="hidden" name="mrl" value="1703"> 
+                    <input type="hidden" name="mrl" value="1703">
                     <input type="hidden" name="icr" value="<?php echo $idabono; ?>">
                     <input type="hidden" name="saldototal" value="<?php echo $ida['Saldo_Pend']; ?>">
                 </div>
@@ -50,7 +50,9 @@ $ida = mysqli_fetch_array($queryida);
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="name">Abono</label>
-                    <input type="text" class="form-control" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 46' name="ab" placeholder="">
+                    <input type="text" class="form-control" value=""
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 46'
+                        name="ab" placeholder="">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -63,6 +65,9 @@ $ida = mysqli_fetch_array($queryida);
                     </select>
                 </div>
             </div>
+
+            <?php $_SESSION['venta_token'] = bin2hex(random_bytes(16)); ?>
+            <input type="hidden" name="venta_token" value="<?php echo $_SESSION['venta_token']; ?>">
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -125,6 +130,14 @@ $ida = mysqli_fetch_array($queryida);
             </div>
         </div>
     </form>
+
+    <script>
+    document.getElementById("vcred").addEventListener("submit", function(e) {
+        const btn = this.querySelector("button[type=submit]");
+        btn.disabled = true;
+        btn.innerText = "Procesando...";
+    });
+    </script>
 </body>
 
 </html>

@@ -61,8 +61,8 @@ include_once "lib/alerts.php";
                             <td>'.date('d/m/Y', strtotime($lectura['Fecha_Inicio'])).'</td>
                             <td>'.date('d/m/Y', strtotime($lectura['Fecha_Fin'])).'</td>
                             <td>'.$catt['tt'].' / 10</td>
-                            <td>
-                                <a class="btn btn-info" href="MTA.php?id='.$lectura['ID_Mutualista'].'"><i class="fa fa-usd"></i> </a>
+                            <td> 
+                                <a class="btn btn-info" href="MTA.php?id='.$lectura['ID_Mutualista'].'"><i class="fa fa-credit-card"></i></a>
                                 <a class="btn btn-danger" href="lib/Mutualista/delete.php?id=' . $lectura['ID_Mutualista'] . '"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
