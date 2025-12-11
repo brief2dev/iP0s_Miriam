@@ -40,7 +40,7 @@ if ($subtotal == 0){
 	$iva = (($total*16)/100);
 
 	if (!isset($_POST['venta_token']) || $_POST['venta_token'] !== $_SESSION['venta_token']) {
-		header("Location: ./../../vender.php?status=duplicado");
+		header("Location: ./../../vender.php?status=33");
 		exit;
 	}
 	unset($_SESSION['venta_token']);

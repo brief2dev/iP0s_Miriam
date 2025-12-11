@@ -1,6 +1,8 @@
 <?php
+session_start();
 include_once "../../cnx.php";
 $idabono = $_GET['idabono'];
+$tipo = $_GET['tipo'];
 //datos del Credito
 $sqlida = "SELECT * FROM Abonos WHERE ID_Abono = ".$idabono;
 $queryida = $conexion -> query ($sqlida);
@@ -28,9 +30,13 @@ $ida = mysqli_fetch_array($queryida);
                     $querycli = $conexion->query($sqlcli);
                     $cliente = mysqli_fetch_array($querycli);
                     echo '<input type="text" readonly style="text-transform: uppercase;" class="form-control"
-                    value="'.$cliente['Nombres'].' '.$cliente['Apellidos'].'" name="cliente" >'
+                    value="'.$cliente['Nombres'].' '.$cliente['Apellidos'].'" name="cliente" >';
+                    $_SESSION['abbs_token'] = bin2hex(random_bytes(16)); ?>
+            
                 ?>
                     <input type="hidden" name="mrl" value="1703">
+                    <input type="hidden" name="ab_token" value="<?php echo $_SESSION['abbs_token']; ?>">
+                    <input type="hidden" name="tipo" value="<?php echo $tipo; ?>">
                     <input type="hidden" name="icr" value="<?php echo $idabono; ?>">
                     <input type="hidden" name="saldototal" value="<?php echo $ida['Saldo_Pend']; ?>">
                 </div>
@@ -66,8 +72,7 @@ $ida = mysqli_fetch_array($queryida);
                 </div>
             </div>
 
-            <?php $_SESSION['venta_token'] = bin2hex(random_bytes(16)); ?>
-            <input type="hidden" name="venta_token" value="<?php echo $_SESSION['venta_token']; ?>">
+            
         </div>
         <div class="row">
             <div class="col-lg-12">

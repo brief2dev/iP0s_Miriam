@@ -65,7 +65,7 @@ include_once "lib/alerts.php";
                                                             echo '<tr>';
                                                             echo '<td>'.$cliente['cliente'].'</td>';
                                                             echo '<td> <a href="Cliente.php?id='.$cliente['cliente'].'"'.'target="_blank">'. $ncliente['Nombres']." ".$ncliente['Apellidos'] .'</a> </td>';
-                                                            $sqltot = "SELECT SUM(Saldo_Pend) as total FROM Abonos WHERE ID_Cliente = ".$cliente['cliente']." AND Estatus = 0";
+                                                            $sqltot = "SELECT SUM(Saldo_Pend) as total FROM Abonos WHERE ID_Cliente = ".$cliente['cliente']." AND Estatus = 0 AND ID_Medio = 3";
                                                             $querytot = $conexion -> query($sqltot);
                                                             $total = mysqli_fetch_array($querytot);
                                                             echo '<td> $'.number_format( $total['total'], 2).'</td>';
@@ -120,7 +120,7 @@ function modalphp(modal) {
         width: 600
     };
 
-    var url = 'lib/Credito/bridge/getdata.php?idcliente=' + modal;
+    var url = 'lib/Credito/bridge/getdata.php?tipo=3&idcliente=' + modal;
     $('#conte-modal').load(url, function() {
         console.log(url);
         $("#modal-blitz").modal("toggle");

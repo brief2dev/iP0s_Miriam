@@ -5,19 +5,27 @@ include_once "../conexion.php";
 include_once "../cnx.php";
 
 $id = $_GET["mrl"];                 //tipo Abono = 1703 o liquidar todo = 2890
+$tipo = $_GET["tipo"];                 //tipo 2Credito, 3 Apartado
 $idcre = $_GET["icr"];              //id del cliente o id del credito
 $personal = $_SESSION['ids'];
 $motivo = 1;                        // 1 abono, 2 Retiro
 $medio = $_GET["md"];                 //1 EFECTIVO 2 TARJETA
 $saldo = $_GET['saldototal'];       //saldo pendiente
 $abonoo = $_GET["ab"];               // el monto a abonar
+$token = $_GET['ab_token'];
 
-/* if (!isset($_POST['venta_token']) || $_POST['venta_token'] !== $_SESSION['venta_token']) {
-    header("Location: ./../../vender.php?status=duplicado");
+if (!isset($token) || $token != $_SESSION['abbs_token']) {
+    if ($tipo == 2) {
+        # credito
+        header("Location: ./../../VCredito.php?status=33&tk=".$_SESSION['abbs_token']."&post=".$token);
+    } else {
+        # apartado
+        header("Location: ./../../VAprt.php?status=33&tk=".$_SESSION['abbs_token']."&post=".$token);
+    }
     exit;
 }
 
-unset($_SESSION['venta_token']); */
+unset($_SESSION['abbs_token']); 
 
 //LIQUIDA TODO
 if($id == 2890){
@@ -56,7 +64,13 @@ if($id == 2890){
                 $message = $mjs;
 	            $phone = '+52'.$cliente['Telefono'];
 	            //require $_SERVER['DOCUMENT_ROOT']."/APIs/aws-SNS.php";
-                header("Location: ./../../VCredito.php?status=1&venta=0&idv=".$idabono['ID_Deuda']);
+                if ($tipo == 2) {
+                    # credito
+                    header("Location: ./../../VCredito.php?status=1&venta=0&idv=".$idabono['ID_Deuda']);
+                } else {
+                    # apartado
+                    header("Location: ./../../VAprt.php?status=1&venta=0&idv=".$idabono['ID_Deuda']);
+                }
             }
         }
     }
@@ -110,7 +124,13 @@ if($id == 2890){
                     $message = $mjs;
                     $phone = '+52'.$cliente['Telefono'];
                     //require $_SERVER['DOCUMENT_ROOT']."/APIs/aws-SNS.php";
-                    header("Location: ./../../VCredito.php?status=1&venta=0&idv=".$idabono['ID_Deuda']);
+                    if ($tipo == 2) {
+                        # credito
+                        header("Location: ./../../VCredito.php?status=1&venta=0&idv=".$idabono['ID_Deuda']);
+                    } else {
+                        # apartado
+                        header("Location: ./../../VAprt.php?status=1&venta=0&idv=".$idabono['ID_Deuda']);
+                    }
                 }
             }
         }

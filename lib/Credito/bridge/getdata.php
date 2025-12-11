@@ -3,6 +3,7 @@ include_once "../../conexion.php";
 include_once "../../cnx.php";
 //MODAL
 $id = $_GET["idcliente"];
+$tipo = $_GET["tipo"]; // 2Credito, 3 Apartado
 
 $sqlidv = "SELECT * FROM Clientes WHERE ID_Cliente = ".$id;
 $queryidv = $conexion -> query ($sqlidv);
@@ -43,8 +44,9 @@ $idv = mysqli_fetch_array($queryidv);
                     </thead>
                     <tbody>
                         <?php //muestras las deudas del usuario
+                        $tipoDescrip = ($tipo == 3) ? '<span class="badge badge-soft-info font-size-12">Apartado</span>' : '<span class="badge badge-soft-warning font-size-12">Credito</span>' ;
                         $tota_adeudo = 0;
-                                $sql2 = "SELECT * FROM Abonos WHERE ID_Cliente = $id AND Estatus = 0 ORDER BY Fecha_Final ASC";
+                                $sql2 = "SELECT * FROM Abonos WHERE ID_Cliente = $id AND ID_Medio = $tipo AND Estatus = 0 ORDER BY Fecha_Final ASC";
                                 $query2 = $conexion -> query ($sql2);
                                 $rows = mysqli_num_rows($query2);
                                     if ($rows == 0){
@@ -57,9 +59,9 @@ $idv = mysqli_fetch_array($queryidv);
                                             echo '<td>'.date('d/m/Y', strtotime($credito['Fecha_Final'])).'</td>';
                                             echo '<td> $'.number_format($credito['Saldo_Pend'], 2).'</td>';
                                             $tota_adeudo = $tota_adeudo + $credito['Saldo_Pend'];
-                                            echo '<td><span class="badge badge-soft-warning font-size-12">Credito</span></td>';
+                                            echo '<td>'.$tipoDescrip.'</td>';
                                             echo '<td><div class="btn btn-primary"><a href="Nota.php?id='.$credito['ID_Venta'].'" target="_blank" style="color:#FFFFFF;><i class="mdi mdi-eye"></i>Nota </a></div></td>';
-                                            echo '<td><div onClick="modal1php('.$credito['ID_Abono'].')" class="btn btn-primary"><i class=""></i>Abonar</div></td>';
+                                            echo '<td><div onClick="modal1php('.$credito['ID_Abono'].', '.$tipo.')" class="btn btn-primary"><i class=""></i>Abonar</div></td>';
                                             echo '<td><div onClick="modal2php('.$credito['ID_Venta'].')" class="btn btn-primary"><i class=""></i>Config</div></td>';
                                             //echo '<td><a href="Nota.php?id='.$venta['ID_Venta'].'" target="_blank" class="btn btn-primary btn-sm">Abonar</a></td>';
                                             echo '</tr>';
@@ -143,20 +145,17 @@ $idv = mysqli_fetch_array($queryidv);
 
 </html>
 <script>
-function modal1php(modal1) {
-
+function modal1php(modal1, tipo) {
     var options = {
         modal: true,
         height: 900,
         width: 600
     };
-    var url1 = 'lib/Credito/bridge/loadpay.php?idabono=' + modal1;
+    var url1 = 'lib/Credito/bridge/loadpay.php?tipo='+tipo+'&idabono=' + modal1;
+    console.log(url1);
     $('#conte1-modal').load(url1, function() {
-        console.log(url1);
+        //console.log(url1);
         $("#modal-blitzc0de").modal("toggle");
-        /* $('#modal-blitzc0de').modal({
-            show: true
-        }); */
     });
 }
 </script>

@@ -3,7 +3,6 @@ header('Content-Type: text/html; charset=UTF-8');
 session_start();
 if ($_SESSION['loggedin'] != true){
     header('Location: index.php');
-    echo $_SESSION['loggedin'];
 }else{
     $page = 'Venta';
     include_once "lib/Header.php" ;
@@ -355,8 +354,6 @@ $cupval = $_GET['st'];
                         <input type="hidden" id="cupval" value="<?php echo $cupval;?>">
                         <button type="submit" class="btn btn-success mt-3 mt-lg-0">Terminar venta</button>
                         <a href="./lib/Ventas/Cancelar.php" class="btn btn-danger">Cancelar venta</a>
-
-
                     </center>
                    
                 </form>
