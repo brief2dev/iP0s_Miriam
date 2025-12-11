@@ -63,8 +63,8 @@ include_once "lib/alerts.php";
                         <?php 
                             //obtiene los datos de la venta
                             $fech = date("Y-m-d");
-                            
-                            $sql = "SELECT * FROM Cupon WHERE Usado = 0 AND Fecha_Exp >= ".$fech." ORDER BY ID_Cupon DESC";
+                            $sql = "SELECT * FROM Cupon WHERE Usado = 0 AND Fecha_Exp >= '$fech' ORDER BY ID_Cupon DESC";
+
                             
                             $query = $conexion -> query ($sql);
                             error_reporting(E_ALL);
